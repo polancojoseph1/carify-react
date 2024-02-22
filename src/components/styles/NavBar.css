@@ -1,0 +1,16 @@
+.NavBar {
+  background-color: black;
+  height: 9vh;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.items {
+  height: 100%;
+  padding: 12px;
+}
+
+.cart-icon {
+  height: 50px;
+  width: 50px;
+}

@@ -1,0 +1,22 @@
+.ProductCard {
+  height: 100%;
+  cursor: pointer;
+}
+
+.details {
+  height: 100%;
+}
+
+.image-section {
+  height: 50%;
+}
+
+.info {
+  height: 50%;
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}

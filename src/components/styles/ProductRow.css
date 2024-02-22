@@ -1,0 +1,22 @@
+.ProductRow {
+  height: 100%;
+}
+
+.three-products {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.product-card {
+  height: 100%;
+  width: 100%;
+}
+
+.react-link {
+  height: 100%;
+  width: 100%;
+  color: black;
+  text-decoration: none;
+  display: block;
+}
