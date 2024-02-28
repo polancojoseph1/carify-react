@@ -5,7 +5,8 @@ import {
   Home,
   ProductDetails,
   Cart,
-  NavBar
+  NavBar,
+  Checkout
 } from './components'
 
 function Router(props) {
@@ -48,6 +49,14 @@ function Router(props) {
             setQuantity={setQuantity}
         />} />
         <Route path="/cart/:id" element={<Cart 
+            cart={cart}
+            setCart={setCart}
+            cartProducts={cartProducts}
+            setCartProducts={setCartProducts}
+            quantity={quantity}
+            setQuantity={setQuantity}
+        />} />
+        <Route path="/checkout/:cartId" element={<Checkout 
             cart={cart}
             setCart={setCart}
             cartProducts={cartProducts}

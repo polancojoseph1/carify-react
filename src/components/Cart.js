@@ -7,6 +7,7 @@ import {
   getCartByUserId
 } from '../apiAccessor';
 import CartProductCard from './CartProductCard';
+import { Link } from 'react-router-dom';
 
 function Cart(props) {
   const {
@@ -59,8 +60,26 @@ function Cart(props) {
           </div>
         )})}
       </div>
-      <div className={styles.totalPrice}>
-        Total Price: {totalPrice}
+      <div className={styles.cartFooter}>
+        <div className={styles.totalPriceContainer}>
+          <div className={styles.totalPriceLabel}>
+            Subtotal ({totalQuantity} {
+              totalQuantity === 1 ?
+                'item' :
+                'items'
+            }):&nbsp;
+          </div>
+          <div className={styles.totalPriceValue}>
+            ${totalPrice}
+          </div>
+        </div>
+        <div className={styles.checkoutSection}>
+          <Link to={`/checkout/${(cart || {}).id}`} className={styles.link}>
+            <button className={styles.proceedToCheckout}>
+              Proceed To Checkout
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   ) : (

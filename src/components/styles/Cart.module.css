@@ -1,0 +1,42 @@
+.cartFooter {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 5%;
+}
+
+.totalPriceContainer {
+  height: 50%;
+  width: 30%;
+  margin-right: 10px;
+  margin: 10px;
+  display: flex;
+}
+
+.totalPriceLabel {
+  font-weight: 500;
+}
+
+.totalPriceValue {
+  font-weight: bolder;
+}
+
+.checkoutSection {
+  height: 50%;
+  width: 35%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.proceedToCheckout {
+  background-color: rgb(249, 208, 0);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-weight: bolder;
+}
