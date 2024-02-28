@@ -2,18 +2,18 @@
   height: 100%;
 }
 
-.three-products {
+.threeProducts {
   height: 100%;
   display: flex;
   justify-content: space-around;
 }
 
-.product-card {
+.productCard {
   height: 100%;
   width: 100%;
 }
 
-.react-link {
+.link {
   height: 100%;
   width: 100%;
   color: black;
