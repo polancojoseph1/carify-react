@@ -1,19 +1,32 @@
 import {Link} from 'react-router-dom';
-import './styles/ProductRow.css'
+import styles from './styles/ProductRow.module.css'
 import ProductCard from './ProductCard';
 
 function ProductRow(props) {
-  const { threeProducts, cart, setCart } = props
+  const {
+    threeProducts,
+    cart,
+    setCart,
+    cartProducts,
+    setCartProducts,
+    quantity,
+    setQuantity
+  } = props;
   return (
-    <div className="ProductRow">
-      <div className='three-products'>
-        {threeProducts.map(product => (
-          <Link to={`/product/${product.id}`} className="react-link">
-              <div className='product-card'>
+    <div className={styles.ProductRow}>
+      <div className={styles.threeProducts}>
+        {threeProducts.map((product, index) => (
+          <Link key={index} to={`/product/${product.id}`} className={styles.link}>
+              <div className={styles.productCard}>
               <ProductCard
                 product={product}
                 cart={cart}
                 setCart={setCart}
+                cartProducts={cartProducts}
+                setCartProducts={setCartProducts}
+                quantity={quantity}
+                setQuantity={setQuantity}
+                key={product.id}
               />
               </div>
           </Link>

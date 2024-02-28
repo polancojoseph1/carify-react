@@ -1,5 +1,6 @@
-const getAllProducts = async (api, setProducts) => {
+const getAllProducts = async (api=null) => {
   try {
+    if (!api) return null
     const { data } = await api.get('/product');
     // creates a new array of arrays which has three
     // products per array
@@ -7,31 +8,32 @@ const getAllProducts = async (api, setProducts) => {
     for (let i = 0; i < data.length; i += 3) {
       productsArray.push(data.slice(i, i + 3));
     }
-    setProducts(productsArray);
+    return productsArray
   } catch (error) {
-    console.error('Error fetching products:', error);
+    console.error('Error fetching all products:', error);
   }
 };
 
-const getProductById = async (productId, setProduct, api) => {
+const getProductById = async (productId, api=null) => {
   try {
+    if (!api) return null
     const { data } = await api.get(`/product/${productId}`);
     const [product] = data
-    setProduct(product)
     return product
   } catch (error) {
     console.error('Error fetching product:', error);
   }
 };
 
-const createGuest = async (auth, setUserId) => {
+const createGuest = async (auth=null) => {
   try {
+    if (!auth) return null
     const { data } = await auth.post('/guest');
     const { user } = data
     const userId = user.id
-    setUserId(userId)
+    return userId
   } catch (error) {
-    console.error('Error fetching user:', error);
+    console.error('Error creating guest:', error);
   }
 };
 
@@ -43,39 +45,100 @@ const setUserIdByStorage = (userId) => {
   localStorage.setItem('userId', userId)
 }
 
-const getCartByUserId = async (userId, setCart, api) => {
+const getCartByUserId = async (userId, api=null) => {
   try {
+    if (!api) return null
     const { data } = await api.get(`/cart/${userId}`);
-    const [ cart ] = data
-    setCart(cart);
+    const [cart] = data
+    return cart
   } catch (error) {
-    console.error('Error fetching product:', error);
+    console.error('Error fetching cart:', error);
   }
 }
 
-const createCart = async (userId, setCart, status, paymentAccountId, api) => {
+const createCart = async (userId, status, paymentAccountId, api=null) => {
   try {
+    if (!api) return null
     const { data } = await api.post(`/cart/${userId}`, {
       "status": status,
       "paymentAccountId": paymentAccountId // allow null
     });
-    const [ cart ] = data
-    setCart(cart);
+    const [cart] = data
+    return cart
   } catch (error) {
-    console.error('Error fetching product:', error);
+    console.error('Error creating cart:', error);
   }
 }
 
-const createCartProduct = async (cartId, productId, quantity, totalPrice, api) => {
+const getCartProductsByCartId = async (cartId, api=null) => {
   try {
-    const { data } = await api.post(`/cart-product/`, {
+    if (!api) return null
+    const { data } = await api.get(`/cart-product/${cartId}`);
+    return data
+  } catch (error) {
+    console.error('Error fetching cart products:', error);
+  }
+}
+
+const getCartProductByCartIdAndProductId = async (cartId, productId, api = null) => {
+  try {
+    if (!api) return null;
+    const { data } = await api.get(`/cart-product/${cartId}/${productId}`);
+    return data
+  } catch (error) {
+    console.error('Error fetching cart product', error)
+  }
+}
+
+const createCartProduct = async (cartId, productId, quantity, totalPrice, api=null) => {
+  try {
+    if (!api) return null
+    await api.post(`/cart-product/`, {
       cartId,
       productId,
       quantity,
       totalPrice
     });
   } catch (error) {
-    console.error('Error fetching product:', error);
+    console.error('Error creating cart product:', error);
+  }
+}
+
+const updateCartProductAdd = async (cartId, productId, addedQuantity, addedPrice, api=null) => {
+  try {
+    if (!api) return null
+    const cartProduct = await api.put(`/cart-product/add`, {
+      cartId,
+      productId,
+      addedQuantity,
+      addedPrice
+    });
+    return cartProduct
+  } catch (error) {
+    console.error('Error updating cart product:', error);
+  }
+}
+
+const updateCartProductChange = async (id, changedQuantity, changedPrice, api=null) => {
+  try {
+    if (!api) return null
+    const cartProduct = await api.put(`/cart-product/change/${id}`, {
+      changedQuantity,
+      changedPrice
+    });
+    return cartProduct
+  } catch (error) {
+    console.error('Error updating cart product:', error);
+  }
+}
+
+const deleteCartProduct = async (cartId, productId, api=null) => {
+  try {
+    if (!api) return null
+    const cartProduct = await api.delete(`/cart-product/${cartId}/${productId}`);
+    return cartProduct
+  } catch (error) {
+    console.error('Error deleting cart product:', error);
   }
 }
 
@@ -87,5 +150,10 @@ export {
   setUserIdByStorage,
   getCartByUserId,
   createCart,
-  createCartProduct
+  createCartProduct,
+  getCartProductsByCartId,
+  getCartProductByCartIdAndProductId,
+  updateCartProductAdd,
+  updateCartProductChange,
+  deleteCartProduct
 }

@@ -1,8 +1,16 @@
-import './styles/ProductCard.css'
+import styles from './styles/ProductCard.module.css'
 import AddToCart from './AddToCart';
 
 function ProductCard(props) {
-  const { product, cart, setCart } = props;
+  const {
+    product,
+    cart,
+    setCart,
+    cartProducts,
+    setCartProducts,
+    quantity: totalQuantity,
+    setQuantity
+  } = props;
   const {
     brand,
     category,
@@ -11,21 +19,25 @@ function ProductCard(props) {
     totalrating
   } = product;
   return (
-    <div className="ProductCard">
-      <div className='details'>
-        <div className='image-section'>
-          <img src={imageurl} className="image" />
+    <div className={styles.ProductCard}>
+      <div className={styles.details}>
+        <div className={styles.imageSection}>
+          <img src={imageurl} className={styles.image} />
         </div>
-        <div className='info'>
-          <div className='brand'>Brand: { brand }</div>
-          <div className='category'>Category: { category }</div>
-          <div className='price'>Price: { price }</div>
-          <div className='totalrating'>Rating: {totalrating}</div>
-          <div className='add-to-cart'>
+        <div className={styles.info}>
+          <div className={styles.brand}>Brand: { brand }</div>
+          <div className={styles.category}>Category: { category }</div>
+          <div className={styles.price}>Price: { price }</div>
+          <div className={styles.totalrating}>Rating: {totalrating}</div>
+          <div className={styles.addToCart}>
             <AddToCart
               product={product}
               cart={cart}
               setCart={setCart}
+              cartProducts={cartProducts}
+              setCartProducts={setCartProducts}
+              quantity={totalQuantity}
+              setQuantity={setQuantity}
             />
           </div>
         </div>

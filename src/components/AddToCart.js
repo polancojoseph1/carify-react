@@ -1,52 +1,82 @@
 import React, { useEffect, useState } from 'react';
 import { api, auth} from '../axiosConfig';
-import './styles/AddToCart.css'
+import styles from './styles/AddToCart.module.css'
 import {
   createGuest,
   getUserIdByStorage,
   setUserIdByStorage,
   getCartByUserId,
   createCart,
-  createCartProduct
+  createCartProduct,
+  getCartProductsByCartId,
+  getCartProductByCartIdAndProductId,
+  updateCartProductAdd
 } from '../apiAccessor'
 
 function AddToCart(props) {
-  const { product, cart, setCart } = props;
+  const {
+    product,
+    cart,
+    setCart,
+    setCartProducts,
+    quantity,
+    setQuantity
+  } = props;
+  const [cartProduct, setCartProduct] = useState({})
   useEffect(() => {
-    const userId = getUserIdByStorage();
-    if (!userId) {
-      createGuest(auth, setUserIdByStorage);
+    async function renderUserId() {
+      const userId = getUserIdByStorage();
+      if (!userId) {
+        const guestUserId = await createGuest(auth);
+        setUserIdByStorage(guestUserId)
+      }
     }
+    renderUserId();
   }, []);
 
   const handleAddToCart = async (event) => {
     event.preventDefault();
     event.stopPropagation();
     const userId = getUserIdByStorage()
-    await getCartByUserId(
+    let selectedCart = await getCartByUserId(
       userId,
-      setCart,
       api
     )
-    if (!cart || !cart.id) {
-      await createCart(
+    if (!selectedCart) {
+      selectedCart = await createCart(
         userId,
-        setCart,
         "active",
         null,
         api
       )
     }
-    await createCartProduct(
-      cart['id'],
-      product['id'],
-      1,
-      product['price'],
-      api
-    )
+    const selectedCartProduct = await getCartProductByCartIdAndProductId(selectedCart['id'], product['id'], api)
+    if (selectedCartProduct['quantity'] >= product['quantity']) {
+      return;
+    }
+    if (!selectedCartProduct) {
+      await createCartProduct(
+        (selectedCart || {})['id'],
+        product['id'],
+        1,
+        product['price'],
+        api
+      )
+    } else {
+      await updateCartProductAdd(
+        selectedCart['id'],
+        product['id'],
+        1,
+        product['price'],
+        api
+      )
+    }
+    setQuantity(quantity + 1);
+    const selectedCartProducts = await getCartProductsByCartId(selectedCart['id'], api)
+    setCartProducts(selectedCartProducts)
   };
   return (
-    <button className="AddToCart" onClick={handleAddToCart}>
+    <button className={styles.AddToCart} onClick={handleAddToCart}>
       Add To Cart
     </button>
   );

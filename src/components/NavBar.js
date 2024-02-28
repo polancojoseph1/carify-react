@@ -1,12 +1,27 @@
-import './styles/NavBar.css'
+import styles from './styles/NavBar.module.css'
 import CartIcon from './CartIcon'
 
-function NavBar() {
+function NavBar(props) {
+  const {
+    cart,
+    setCart,
+    cartProducts,
+    setCartProducts,
+    quantity,
+    setQuantity,
+  } = props
   return (
-    <div className="NavBar">
-      <div className='items'>
-        <div className='cart-icon'>
-          <CartIcon/>
+    <div className={styles.NavBar}>
+      <div className={styles.items}>
+        <div className={styles.cartIcon}>
+          <CartIcon
+            cart={cart}
+            setCart={setCart}
+            cartProducts={cartProducts}
+            setCartProducts={setCartProducts}
+            quantity={quantity}
+            setQuantity={setQuantity}
+          />
         </div>
       </div>
     </div>
