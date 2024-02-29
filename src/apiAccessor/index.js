@@ -70,6 +70,20 @@ const createCart = async (userId, status, paymentAccountId, api=null) => {
   }
 }
 
+const updateCart = async (id, status, paymentAccountId, api=null) => {
+  try {
+    if (!api) return null
+    const { data } = await api.put(`/cart/${id}`, {
+      "status": status,
+      "paymentAccountId": paymentAccountId // allow null
+    });
+    const {cart} = data
+    return cart
+  } catch (error) {
+    console.error('Error updating cart:', error);
+  }
+}
+
 const getCartProductsByCartId = async (cartId, api=null) => {
   try {
     if (!api) return null
@@ -150,6 +164,7 @@ export {
   setUserIdByStorage,
   getCartByUserId,
   createCart,
+  updateCart,
   createCartProduct,
   getCartProductsByCartId,
   getCartProductByCartIdAndProductId,

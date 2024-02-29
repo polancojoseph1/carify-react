@@ -18,6 +18,7 @@ function App() {
   ] = useState(0);
   useEffect(() => {
     async function renderCartData() {
+      console.log("rending cart datos <---")
         const userId = getUserIdByStorage();
         if (userId) {
           const selectedCart = await getCartByUserId(

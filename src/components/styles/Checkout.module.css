@@ -1,0 +1,22 @@
+.Checkout {
+  width: 100%;
+}
+
+.checkoutTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkoutTitleText {
+  font-size: 20px;
+  font-weight: bolder;
+  margin-top: 1%;
+}
+
+.checkoutForm {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

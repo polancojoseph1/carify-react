@@ -6,6 +6,7 @@ import {
   deleteCartProduct
 } from '../apiAccessor';
 import { api } from '../axiosConfig';
+import { Link } from 'react-router-dom';
 
 function CartProductCard(props) {
   const {
@@ -116,7 +117,9 @@ function CartProductCard(props) {
     <div className={styles.CartProductCard}>
       <div className={styles.details}>
         <div className={styles.imageSection}>
-          <img src={imageurl} className={styles.image} />
+          <Link className={styles.link} to={`/product/${cartProduct['product_id']}`}>
+            <img src={imageurl} className={styles.image} />
+          </Link>
         </div>
         <div className={styles.info}>
           <div className={styles.descriptionAndPrice}>

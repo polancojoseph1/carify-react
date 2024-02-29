@@ -1,6 +1,7 @@
 .ProductCard {
   height: 100%;
   cursor: pointer;
+  margin: 20px;
 }
 
 .details {

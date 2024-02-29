@@ -74,7 +74,13 @@ function Cart(props) {
           </div>
         </div>
         <div className={styles.checkoutSection}>
-          <Link to={`/checkout/${(cart || {}).id}`} className={styles.link}>
+          <Link
+            to={`/checkout/${(cart || {}).id}`}
+            state={{
+              totalPrice: totalPrice,
+              totalQuantity: totalQuantity
+            }}
+            className={styles.link}>
             <button className={styles.proceedToCheckout}>
               Proceed To Checkout
             </button>
