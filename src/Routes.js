@@ -6,7 +6,8 @@ import {
   ProductDetails,
   Cart,
   NavBar,
-  Checkout
+  Checkout,
+  UserPage
 } from './components'
 
 function Router(props) {
@@ -64,6 +65,7 @@ function Router(props) {
             quantity={quantity}
             setQuantity={setQuantity}
         />} />
+        <Route path="/user/:id" element={<UserPage/>} />
       </Routes>
     </BrowserRouter>
   );

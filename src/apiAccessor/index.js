@@ -156,6 +156,17 @@ const deleteCartProduct = async (cartId, productId, api=null) => {
   }
 }
 
+const getUserById = async (id, api=null) => {
+  try {
+    if (!api) return null
+    const { data } = await api.get(`/user/${id}`);
+    const [ user ] = data
+    return user
+  } catch (error) {
+    console.error('Error fetching user:', error);
+  }
+}
+
 export {
   getAllProducts,
   getProductById,
@@ -170,5 +181,6 @@ export {
   getCartProductByCartIdAndProductId,
   updateCartProductAdd,
   updateCartProductChange,
-  deleteCartProduct
+  deleteCartProduct,
+  getUserById
 }

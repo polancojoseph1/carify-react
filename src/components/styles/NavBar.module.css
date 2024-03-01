@@ -13,6 +13,10 @@
   justify-content: space-between;
 }
 
+.rightSideNav {
+  display: flex;
+}
+
 .cartIcon {
   height: 50px;
   width: 50px;

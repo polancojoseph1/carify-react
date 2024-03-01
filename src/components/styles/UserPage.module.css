@@ -1,0 +1,39 @@
+.UserPage {
+  height: 91vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userSection {
+  width: 50%;
+  height: 50%;
+  border: 1.5px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px rgba(175, 175, 175, 0.2);
+}
+
+.loginSection {
+  width: 50%;
+  height: 50%;
+  border: 1.5px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px rgba(175, 175, 175, 0.2);
+}
+
+.signupSection {
+  width: 60%;
+  height: 60%;
+  border: 1.5px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px rgba(175, 175, 175, 0.2);
+}
+
+.loginFormContainer {
+  height: 100%;
+}
+
+.signupFormContainer {
+  height: 100%;
+}

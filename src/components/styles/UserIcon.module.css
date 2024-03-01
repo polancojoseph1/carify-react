@@ -1,0 +1,15 @@
+.UserIcon {
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  height: 50px;
+  width: 50px;
+  filter: invert(1);
+  position: relative;
+  bottom: 10px;
+}
