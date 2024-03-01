@@ -37,6 +37,35 @@ const createGuest = async (auth=null) => {
   }
 };
 
+const login = async (email, password, auth=null) => {
+  try {
+    if (!auth) return null
+    const { data } = await auth.post('/login', {
+      email,
+      password
+    });
+    const { user } = data
+    return user
+  } catch (error) {
+    console.error('Error creating guest:', error);
+  }
+};
+
+const signup = async (name, email, password, auth=null) => {
+  try {
+    if (!auth) return null
+    const { data } = await auth.post('/signup', {
+      name,
+      email,
+      password
+    });
+    const { user } = data
+    return user
+  } catch (error) {
+    console.error('Error creating guest:', error);
+  }
+};
+
 const getUserIdByStorage = () => {
   return localStorage.getItem('userId');
 }
@@ -171,6 +200,8 @@ export {
   getAllProducts,
   getProductById,
   createGuest,
+  login,
+  signup,
   getUserIdByStorage,
   setUserIdByStorage,
   getCartByUserId,

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import styles from './styles/SignupForm.module.css'
+import { auth } from '../axiosConfig';
+import { signup } from '../apiAccessor';
 
 function SignupForm(props) {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -10,16 +12,18 @@ function SignupForm(props) {
   const [rememberMe, setRememberMe] = useState(false);
   const {setSignupSelected} = props;
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Perform login logic here (e.g., send username and password to server)
-    console.log('Username:', username);
-    console.log('Password:', password);
-    console.log('Remember me:', rememberMe);
+    const user = await signup(
+      `${firstName} ${lastName}`,
+      email,
+      password,
+      auth
+    )
+    console.log(user, 'signed up user <--')
   };
 
   const handleRegister = () => {
-    console.log('changing set signup')
     setSignupSelected(false)
   }
 
@@ -46,9 +50,9 @@ function SignupForm(props) {
         <input
           className={styles.formInput}
           type="text"
-          placeholder='Username'
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          placeholder='Email'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
         <input

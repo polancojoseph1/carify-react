@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import styles from './styles/LoginForm.module.css'
+import { auth } from '../axiosConfig';
+import { login } from '../apiAccessor';
 
 function LoginForm(props) {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const {setSignupSelected} = props;
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Perform login logic here (e.g., send username and password to server)
-    console.log('Username:', username);
-    console.log('Password:', password);
-    console.log('Remember me:', rememberMe);
+    const user = await login(email, password, auth)
+    console.log(user)
   };
 
   const handleRegister = () => {
@@ -26,9 +26,9 @@ function LoginForm(props) {
         <input
           className={styles.formInput}
           type="text"
-          placeholder='Username'
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          placeholder='Email'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
         <br />
