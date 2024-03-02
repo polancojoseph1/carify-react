@@ -65,7 +65,9 @@ function Router(props) {
             quantity={quantity}
             setQuantity={setQuantity}
         />} />
-        <Route path="/user/:id" element={<UserPage/>} />
+        <Route path="/user/:id" element={<UserPage />}
+            cart={cart}
+        />
       </Routes>
     </BrowserRouter>
   );

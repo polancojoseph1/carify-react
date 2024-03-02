@@ -7,8 +7,8 @@
 }
 
 .userSection {
-  width: 50%;
-  height: 50%;
+  width: 40%;
+  height: 40%;
   border: 1.5px solid #ddd;
   border-radius: 5px;
   box-shadow: 1px 1px 1px rgba(175, 175, 175, 0.2);
@@ -28,6 +28,10 @@
   border: 1.5px solid #ddd;
   border-radius: 5px;
   box-shadow: 1px 1px 1px rgba(175, 175, 175, 0.2);
+}
+
+.userAccountContainer {
+  height: 100%;
 }
 
 .loginFormContainer {

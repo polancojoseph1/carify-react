@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import styles from './styles/SignupForm.module.css'
 import { auth } from '../axiosConfig';
-import { signup } from '../apiAccessor';
+import {
+  signup,
+  setUserIdByStorage
+} from '../apiAccessor';
+import { useNavigate } from 'react-router-dom';
 
 function SignupForm(props) {
   const [email, setEmail] = useState('');
@@ -10,7 +14,8 @@ function SignupForm(props) {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
-  const {setSignupSelected} = props;
+  const { setSignupSelected } = props;
+  const navigate = useNavigate()
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,7 +25,8 @@ function SignupForm(props) {
       password,
       auth
     )
-    console.log(user, 'signed up user <--')
+    setUserIdByStorage(user['id'])
+    navigate('/product')
   };
 
   const handleRegister = () => {

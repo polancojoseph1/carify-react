@@ -66,12 +66,25 @@ const signup = async (name, email, password, auth=null) => {
   }
 };
 
+const logout = async (auth=null) => {
+  try {
+    if (!auth) return null
+    await auth.post('/logout');
+  } catch (error) {
+    console.error('Error creating guest:', error);
+  }
+};
+
 const getUserIdByStorage = () => {
   return localStorage.getItem('userId');
 }
 
 const setUserIdByStorage = (userId) => {
   localStorage.setItem('userId', userId)
+}
+
+const removeUserIdFromStorage = () => {
+  localStorage.removeItem('userId')
 }
 
 const getCartByUserId = async (userId, api=null) => {
@@ -196,14 +209,30 @@ const getUserById = async (id, api=null) => {
   }
 }
 
+const editUser = async (id, name, email, api=null) => {
+  try {
+    if (!api) return null
+    const { data } = await api.get(`/user/${id}`, {
+      name,
+      email
+    });
+    const [user] = data
+    return user
+  } catch (error) {
+    console.error('Error editing user:', error);
+  }
+}
+
 export {
   getAllProducts,
   getProductById,
   createGuest,
   login,
   signup,
+  logout,
   getUserIdByStorage,
   setUserIdByStorage,
+  removeUserIdFromStorage,
   getCartByUserId,
   createCart,
   updateCart,
@@ -213,5 +242,6 @@ export {
   updateCartProductAdd,
   updateCartProductChange,
   deleteCartProduct,
-  getUserById
+  getUserById,
+  editUser
 }

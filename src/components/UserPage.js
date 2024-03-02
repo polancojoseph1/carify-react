@@ -7,10 +7,12 @@ import { useEffect, useState } from 'react';
 import { api } from '../axiosConfig';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
+import UserAccount from './UserAccount';
 
-function UserPage() {
+function UserPage(props) {
   const [isGuest, setIsGuest] = useState(true);
   const [signupSelected, setSignupSelected] = useState(false);
+  const {cart} = props;
   useEffect(() => {
     async function fetchUser() {
       const userId = getUserIdByStorage()
@@ -48,7 +50,11 @@ function UserPage() {
               />
             </div>)
           :
-          (<div></div>)
+          (<div className={styles.userAccountContainer}>
+            <UserAccount
+              cartId={cart ? cart.id : null}
+            />
+          </div>)
         }
       </div>
     </div>

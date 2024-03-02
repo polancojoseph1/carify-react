@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
 import styles from './styles/LoginForm.module.css'
 import { auth } from '../axiosConfig';
-import { login } from '../apiAccessor';
+import {
+  login,
+  setUserIdByStorage
+} from '../apiAccessor';
+import { useNavigate } from 'react-router-dom';
 
 function LoginForm(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
-  const {setSignupSelected} = props;
+  const { setSignupSelected } = props;
+  const navigate = useNavigate()
   
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = await login(email, password, auth)
-    console.log(user)
+    setUserIdByStorage(user['id'])
+    navigate('/product')
   };
 
   const handleRegister = () => {
