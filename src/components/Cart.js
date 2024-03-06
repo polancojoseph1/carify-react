@@ -7,6 +7,7 @@ import {
   getCartByUserId
 } from '../apiAccessor';
 import CartProductCard from './CartProductCard';
+import EmptyCartPage from './EmptyCartPage';
 import { Link } from 'react-router-dom';
 
 function Cart(props) {
@@ -89,8 +90,8 @@ function Cart(props) {
       </div>
     </div>
   ) : (
-      <div>
-        Sorry no cart found
+      <div className={styles.emptyCartPage}>
+        <EmptyCartPage/>
       </div>
   );
 }

@@ -1,0 +1,43 @@
+.SuccessfulCheckoutPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: green;
+  height: 91vh;
+}
+
+.checkmark {
+  padding-top: 5%;
+  height: 400px;
+  width: 400px;
+}
+
+.successText {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.returnToShopButtonSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.returnToShopButton {
+  background-color: rgb(221, 184, 0);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-weight: bolder;
+  color: black;
+}

@@ -62,7 +62,7 @@ function CheckoutForm(props) {
     setCart({})
     setCartProducts([])
     setQuantity(0)
-    navigate('/product');
+    navigate('/success');
   };
 
   return (

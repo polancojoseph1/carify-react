@@ -22,7 +22,7 @@ function ProductCard(props) {
     <div className={styles.ProductCard}>
       <div className={styles.details}>
         <div className={styles.imageSection}>
-          <img src={imageurl} className={styles.image} />
+          <img src={require(`../icon/cars/${imageurl || '0.png'}`)} className={styles.image} />
         </div>
         <div className={styles.info}>
           <div className={styles.brand}>Brand: { brand }</div>

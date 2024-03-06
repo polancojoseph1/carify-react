@@ -14,10 +14,14 @@ function ProductRow(props) {
   } = props;
   return (
     <div className={styles.ProductRow}>
-      <div className={styles.threeProducts}>
+      <div className={
+          styles.threeProducts
+      }>
         {threeProducts.map((product, index) => (
-          <Link key={index} to={`/product/${product.id}`} className={styles.link}>
-              <div className={styles.productCard}>
+        <div>
+          { product ?
+          (<Link key={index} to={`/product/${product.id}`} className={styles.link}>
+            <div className={styles.productCard}>
               <ProductCard
                 product={product}
                 cart={cart}
@@ -29,7 +33,12 @@ function ProductRow(props) {
                 key={product.id}
               />
               </div>
-          </Link>
+          </Link>)
+          : (<div className={styles.productCardEmpty}>
+              hello world
+            </div>)
+            }
+          </div>
         ))}
       </div>
     </div>

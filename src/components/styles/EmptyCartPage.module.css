@@ -1,0 +1,69 @@
+.EmptyCartPage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 100px 0;
+}
+
+.emptyCartLogoSection {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.logo {
+  width: 200px;
+  height: 200px;
+  color: red;
+}
+
+.emptyCartTextSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3%;
+}
+
+.emptyCartText {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+
+.emptyCartDescription {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.returnToShopButtonSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.returnToShopButton {
+  background-color: rgb(39, 99, 252);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-weight: bolder;
+  color: whitesmoke;
+}

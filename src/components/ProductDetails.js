@@ -36,11 +36,12 @@ function ProductDetails(props) {
     quantity: productQuantity,
     totalrating
   } = product
+  console.log(`../icon/cars/${imageurl}`)
   return (
     <div className={styles.ProductDetails}>
       <div className={styles.detailsContainer}>
       <div className={styles.imageSection}>
-          <img src={imageurl} className={styles.image} />
+          <img src={product ? require(`../icon/cars/${imageurl || '0.png'}`) : ''} className={styles.image} />
         </div>
         <div className={styles.info}>
           <p className={styles.description}>Description: { description }</p>

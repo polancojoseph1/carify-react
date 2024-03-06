@@ -40,3 +40,8 @@
   cursor: pointer;
   font-weight: bolder;
 }
+
+.emptyCartPage {
+  width: 100%;
+  height: 100%;
+}

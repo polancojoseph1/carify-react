@@ -8,6 +8,18 @@
   justify-content: space-around;
 }
 
+.twoProducts {
+  width: 66.6%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.oneProduct {
+  width: 33.3%;
+  display: flex;
+  justify-content: space-around;
+}
+
 .productCard {
   height: 100%;
   width: 100%;

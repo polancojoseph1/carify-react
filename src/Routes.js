@@ -7,7 +7,8 @@ import {
   Cart,
   NavBar,
   Checkout,
-  UserPage
+  UserPage,
+  SuccessfulCheckoutPage
 } from './components'
 
 function Router(props) {
@@ -68,6 +69,7 @@ function Router(props) {
         <Route path="/user/:id" element={<UserPage />}
             cart={cart}
         />
+        <Route path="/success" element={<SuccessfulCheckoutPage />}/>
       </Routes>
     </BrowserRouter>
   );
