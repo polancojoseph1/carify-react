@@ -79,3 +79,28 @@
     height: 50%;
   }
 }
+
+@media (max-height: 750px) {
+  .description {
+    font-size: 13px;
+  }
+}
+
+@media (max-height: 650px) {
+  .imageSection {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+  }
+  .image {
+    height: 250px;
+    width: 250px;
+  }
+}
+
+@media (max-height: 550px) {
+  .image {
+    height: 200px;
+    width: 200px;
+  }
+}

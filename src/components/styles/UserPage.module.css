@@ -65,3 +65,23 @@
     height: 50%;
   }
 }
+
+@media (max-height: 800px) {
+  .loginSection {
+    height: 70%;
+  }
+
+  .signupSection {
+    height: 80%;
+  }
+
+  .userSection {
+    height: 60%;
+  }
+}
+
+@media (max-height: 550px) {
+  .userSection {
+    height: 70%;
+  }
+}

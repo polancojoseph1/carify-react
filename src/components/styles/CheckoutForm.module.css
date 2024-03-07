@@ -156,3 +156,35 @@ input::placeholder {
     align-items: center;
   }
 }
+
+@media (max-height: 800px) {
+  .longInput, .halfInput, .thirdInput, .buttonSection {
+    padding: 3px;
+  }
+  .formGroupLabel {
+    margin: 7px 0;
+  }
+}
+
+@media (max-height: 700px) {
+  .longInput, .halfInput, .thirdInput, .buttonSection {
+    padding: 1px;
+  }
+  .formGroupLabel {
+    margin: 5px 0;
+  }
+}
+
+@media (max-height: 600px) {
+  .formGroupLabel {
+    margin: 0;
+  }
+
+  .checkboxGroup {
+    margin-bottom: 10px;
+  }
+
+  .checkboxText {
+    font-size: 10px;
+  }
+}

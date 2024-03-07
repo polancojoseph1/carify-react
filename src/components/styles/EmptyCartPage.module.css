@@ -20,7 +20,6 @@
 .logo {
   width: 200px;
   height: 200px;
-  color: red;
 }
 
 .emptyCartTextSection {
@@ -66,4 +65,50 @@
   cursor: pointer;
   font-weight: bolder;
   color: whitesmoke;
+}
+
+@media (max-width: 600px) {
+  .emptyCartDescription {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .emptyCartDescription {
+    display: none;
+  }
+}
+
+@media (max-height: 680px) {
+  .EmptyCartPage {
+    margin: 15% 0;
+  }
+}
+
+@media (max-height: 550px) {
+  .EmptyCartPage {
+    margin: 10% 0;
+  }
+}
+
+@media (max-height: 480px) {
+  .EmptyCartPage {
+    margin: 5% 0;
+  }
+
+  .logo {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-height: 350px) {
+  .EmptyCartPage {
+    margin: 2% 0;
+  }
+
+  .logo {
+    width: 100px;
+    height: 100px;
+  }
 }

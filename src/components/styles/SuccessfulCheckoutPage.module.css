@@ -78,19 +78,47 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 300px) {
+  .successText {
+    display: none;
+  }
+
+  .returnToShopButton {
+    margin: 20px;
+  }
+}
+
+
+@media (max-height: 850px) {
   .checkmark {
-    padding-top: 25%;
+    padding-top: 10%;
+    height: 200px;
+    width: 200px;
+  }
+}
+
+@media (max-height: 700px) {
+  .checkmark {
+    padding-top: 8%;
+  }
+}
+
+@media (max-height: 550px) {
+  .checkmark {
+    padding-top: 3%;
+  }
+
+  .successText {
+    font-size: 15px;
+  }
+}
+
+@media (max-height: 400px) {
+  .checkmark {
     height: 150px;
     width: 150px;
   }
 
-  .successText {
-    font-size: 13px;
-  }
-}
-
-@media (max-width: 300px) {
   .successText {
     display: none;
   }
