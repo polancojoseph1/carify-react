@@ -41,3 +41,61 @@
   font-weight: bolder;
   color: black;
 }
+
+@media (max-width: 850px) {
+  .checkmark {
+    padding-top: 10%;
+    height: 200px;
+    width: 200px;
+  }
+}
+
+@media (max-width: 700px) {
+  .checkmark {
+    padding-top: 15%;
+  }
+}
+
+@media (max-width: 550px) {
+  .checkmark {
+    padding-top: 20%;
+  }
+
+  .successText {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 400px) {
+  .checkmark {
+    padding-top: 25%;
+    height: 150px;
+    width: 150px;
+  }
+
+  .successText {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 400px) {
+  .checkmark {
+    padding-top: 25%;
+    height: 150px;
+    width: 150px;
+  }
+
+  .successText {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 300px) {
+  .successText {
+    display: none;
+  }
+
+  .returnToShopButton {
+    margin: 20px;
+  }
+}

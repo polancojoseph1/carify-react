@@ -7,6 +7,7 @@ import {
 } from '../apiAccessor';
 import { api } from '../axiosConfig';
 import { Link } from 'react-router-dom';
+import StarRating from './StarRating';
 
 function CartProductCard(props) {
   const {
@@ -131,7 +132,9 @@ function CartProductCard(props) {
             </div>
             <div className={styles.price}> ${ price * cpQuantityState }</div>
           </div>
-          <div className={styles.totalrating}>Rating: {totalrating}</div>
+          <div className={styles.starRating}>
+            <StarRating rating={totalrating} />
+          </div>
           <div className={styles.updateAndDeleteCartProducts}>
             <div className={styles.updateCpQuantity}>
               <div className={styles.numberOfItems}>

@@ -41,3 +41,27 @@
 .signupFormContainer {
   height: 100%;
 }
+
+@media (max-width: 650px) {
+  .loginSection {
+    width: 75%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .userSection {
+    width: 50%;
+  }
+}
+
+@media (max-width: 650px) {
+  .userSection {
+    width: 75%;
+  }
+}
+
+@media (max-width: 320px) {
+  .userSection {
+    height: 50%;
+  }
+}

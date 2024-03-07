@@ -45,3 +45,42 @@
   width: 100%;
   height: 100%;
 }
+
+@media (max-width: 1250px) {
+  .image {
+    height: 150px;
+    width: 150px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .image {
+    height: 150px;
+    width: 150px;
+  }
+  .cartFooter {
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 750px) {
+  .cartFooter {
+    flex-direction: column;
+  }
+  .checkoutSection {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .totalPriceContainer {
+    width: 100%;
+    justify-content: center;
+    margin: 20px;
+  }
+}
+
+@media (max-width: 650px) {
+  .checkoutSection {
+    margin-bottom: 20px;
+  }
+}

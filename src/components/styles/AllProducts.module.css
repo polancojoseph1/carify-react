@@ -2,7 +2,48 @@
   height: 100%;
 }
 
-.productRow {
-  height: 30%;
+.productCards {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.link {
+  height: 100%;
+  width: 100%;
+  color: black;
+  text-decoration: none;
+  display: block;
+}
+
+.productCard {
+  height: 100%;
   padding: 10px;
+}
+
+@media (max-width: 450px) {
+  .productCards {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 650px) {
+  .productCards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .productCards {
+    padding: 10px;
+  }
+}
+
+@media (min-width: 1100px) {
+  
 }

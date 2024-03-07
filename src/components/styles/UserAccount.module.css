@@ -176,3 +176,39 @@
   text-decoration: underline;
   color: #007bff;
 }
+
+@media (max-width: 1000px) {
+  .footer {
+    font-size: 13px;
+  }
+
+  .infoText {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 320px) {
+  .title {
+    font-size: 18px;
+  }
+
+  .infoRow {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .infoLabel {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .infoValue {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

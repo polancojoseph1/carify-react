@@ -8,9 +8,9 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 function LoginForm(props) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [rememberMe, setRememberMe] = useState(false);
+  const [email, setEmail] = useState(localStorage.getItem('email') || '');
+  const [password, setPassword] = useState(localStorage.getItem('password') || '');
+  const [rememberMe, setRememberMe] = useState(localStorage.getItem('rememberMe') === 'true' || false);
   const { setSignupSelected } = props;
   const navigate = useNavigate()
   
@@ -18,6 +18,15 @@ function LoginForm(props) {
     e.preventDefault();
     const user = await login(email, password, auth)
     setUserIdByStorage(user['id'])
+    if (rememberMe) {
+      localStorage.setItem('email', email)
+      localStorage.setItem('password', password)
+      localStorage.setItem('rememberMe', true)
+    } else {
+      localStorage.removeItem('email')
+      localStorage.removeItem('password')
+      localStorage.removeItem('rememberMe')
+    }
     navigate('/product')
   };
 

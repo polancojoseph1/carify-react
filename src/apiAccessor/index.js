@@ -4,14 +4,14 @@ const getAllProducts = async (api = null) => {
     const { data } = await api.get('/product');
     // creates a new array of arrays which has three
     // products per array, padded with null if necessary
-    const productsArray = [];
-    for (let i = 0; i < data.length; i += 3) {
-      const slicedArray = data.slice(i, i + 3);
-      // Pad the sliced array with null values if it has less than 3 items
-      const paddedArray = slicedArray.concat(Array.from({ length: 3 - slicedArray.length }, () => null));
-      productsArray.push(paddedArray);
-    }
-    return productsArray;
+    // const productsArray = [];
+    // for (let i = 0; i < data.length; i += 3) {
+    //   const slicedArray = data.slice(i, i + 3);
+    //   // Pad the sliced array with null values if it has less than 3 items
+    //   const paddedArray = slicedArray.concat(Array.from({ length: 3 - slicedArray.length }, () => null));
+    //   productsArray.push(paddedArray);
+    // }
+    return data;
   } catch (error) {
     console.error('Error fetching all products:', error);
   }

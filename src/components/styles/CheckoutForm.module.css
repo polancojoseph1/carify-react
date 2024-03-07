@@ -121,9 +121,38 @@ input::placeholder {
   background-color: #a94702f8;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 850px) {
+  .CheckoutForm {
+    width: 75%;
+  }
+  .checkboxText {
+    font-size: 10px;
+  }
+  input::placeholder {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 650px) {
+  .CheckoutForm {
+    width: 80%;
+  }
   .formContainer {
     width: 100%;
     padding: 10px;
+  }
+}
+
+@media (max-width: 450px) {
+  .completeOrder {
+    width: 100%;
+  }
+}
+
+@media (max-width: 350px) {
+  .subtotalSection {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }

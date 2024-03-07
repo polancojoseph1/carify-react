@@ -14,7 +14,6 @@ function UserAccount(props) {
     async function fetchUser() {
       const userId = getUserIdByStorage();
       const selectedUser = await getUserById(userId, api);
-      console.log(selectedUser, "selected user");
       const fullName = selectedUser.name
         ?
           selectedUser.name.split(' ')

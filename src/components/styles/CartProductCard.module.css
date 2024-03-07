@@ -42,6 +42,7 @@
 .price {
   width: 20%;
   font-weight: bold;
+  font-size: 13px;
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
@@ -69,10 +70,15 @@
   text-align: center;
 }
 
+.starRating {
+  margin-top: 3px;
+  color: #FFD700;
+}
+
 .numberOfItems {
   font-weight: bold;
   font-size: 12px;
-  padding: 5px;
+  padding: 5px 5px 5px 0;
 }
 
 .quantityInput {
@@ -90,4 +96,47 @@
 
 .deleteText {
   cursor: pointer;
+}
+
+@media (max-width: 1250px) {
+  .image {
+    height: 150px;
+    width: 150px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .CartProductCard {
+    margin: 15px 0;
+  }
+  .image {
+    height: 100px;
+    width: 100px;
+  }
+
+  .description {
+    font-size: 13px;
+  }
+  .info {
+    width: 75%;
+  }
+}
+
+@media (max-width: 650px) {
+  .CartProductCard {
+    margin: 10px 0;
+  }
+  .imageSection {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .image {
+    height: 200px;
+    width: 200px;
+  }
+  .details {
+    flex-direction: column;
+  }
 }

@@ -20,3 +20,10 @@
   align-items: center;
   justify-content: center;
 }
+
+@media (max-width: 850px) {
+  .checkoutTitle {
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+}

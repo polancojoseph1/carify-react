@@ -4,6 +4,7 @@ import {api} from '../axiosConfig';
 import styles from './styles/ProductDetails.module.css'
 import AddToCart from './AddToCart';
 import { getProductById } from '../apiAccessor'
+import StarRating from './StarRating';
 
 function ProductDetails(props) {
   const [product, setProduct] = useState({});
@@ -36,23 +37,42 @@ function ProductDetails(props) {
     quantity: productQuantity,
     totalrating
   } = product
-  console.log(`../icon/cars/${imageurl}`)
   return (
     <div className={styles.ProductDetails}>
       <div className={styles.detailsContainer}>
-      <div className={styles.imageSection}>
+        <div className={styles.title}>
+          <div className={styles.titleText}>
+            { brand } { category }
+          </div>
+        </div>
+        <div className={styles.imageSection}>
           <img src={product ? require(`../icon/cars/${imageurl || '0.png'}`) : ''} className={styles.image} />
         </div>
         <div className={styles.info}>
-          <p className={styles.description}>Description: { description }</p>
-          <div className={styles.brand}>Brand: { brand }</div>
-          <div className={styles.category}>Category: { category }</div>
-          <div className={styles.price}>Price: { price }</div>
-          <div className={styles.totalRating}>Rating: { totalrating }</div>
-          <div className={styles.color}>Color: { color }</div>
-          <div className={styles.condition}>Condition: { condition }</div>
-          <div className={styles.model}>Model: { model }</div>
-          <div className={styles.quantity}>Quantity: {productQuantity}</div>
+          <p className={styles.description}> { description }</p>
+          <div className={styles.priceAndRating}>
+            <div className={styles.totalRating}>
+              <StarRating rating={totalrating} />
+            </div>
+            <div className={styles.price}>${ price }</div>
+          </div>
+          {/* <div className={styles.quantity}>Quantity: {productQuantity}</div> */}
+          <div className={
+            productQuantity < 10
+              ?
+              styles.quantitySectionRed
+              : styles.quantitySectionGreen
+          }>
+              <div
+                type='number' 
+                className={styles.quantityAmount}
+              >
+                  {productQuantity}&nbsp;
+                </div>
+                <div className={styles.numberOfItems}>
+                    items left in stock.
+              </div>
+            </div>
           <div className={styles.addToCart}>
             <AddToCart
               product={product}
