@@ -136,10 +136,18 @@ function UserAccount(props) {
       </div>
       <div className={styles.footer}>
         <div className={styles.viewProducts}>
-          <Link className={styles.productsLink} to="/product">Products</Link>
+          <Link
+            className={styles.productsLink}
+            to="/product"
+            title={`View Products`}
+          >Products</Link>
         </div>
         <div className={styles.viewCart}>
-          <Link className={styles.cartLink} to={`/cart/${cartId || 0}`}>Cart</Link>
+          <Link
+            className={styles.cartLink}
+            to={`/cart/${cartId || 0}`}
+            title={`View Cart`}
+          >Cart</Link>
         </div>
         <div className={styles.logoutSection}>
           <div onClick={handleLogout} className={styles.logout}>Logout</div>

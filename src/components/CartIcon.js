@@ -50,7 +50,7 @@ function CartIcon(props) {
   }, [(cartProducts || []).length]);
   return (
     <div className={styles.CartIcon}>
-      <Link to={`/cart/${(cart || {}).id}`} className={styles.link}>
+      <Link to={`/cart/${(cart || {}).id}`} className={styles.link} title='View Cart'>
         {
           quantity ?
             (

@@ -118,7 +118,11 @@ function CartProductCard(props) {
     <div className={styles.CartProductCard}>
       <div className={styles.details}>
         <div className={styles.imageSection}>
-          <Link className={styles.link} to={`/product/${cartProduct['product_id']}`}>
+          <Link
+            className={styles.link}
+            to={`/product/${cartProduct['product_id']}`}
+            title={`View ${brand}`}
+          >
             <img src={require(`../icon/cars/${imageurl || '0.png'}`)} className={styles.image} />
           </Link>
         </div>

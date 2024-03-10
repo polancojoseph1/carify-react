@@ -7,7 +7,10 @@ function UserIcon() {
   const userId = getUserIdByStorage()
   return (
     <div className={styles.UserIcon}>
-      <Link to={`/user/${userId}`} className={styles.link}>
+      <Link
+        to={`/user/${userId}`}
+        className={styles.link}
+        title='View Account'>
         <img src={userIcon}
           alt='Car Icon'
           className={styles.icon}

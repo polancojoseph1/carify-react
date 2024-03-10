@@ -20,7 +20,12 @@ function ProductRow(props) {
         {threeProducts.map((product, index) => (
         <div>
           { product ?
-          (<Link key={index} to={`/product/${product.id}`} className={styles.link}>
+              (<Link
+                key={index}
+                to={`/product/${product.id}`}
+                className={styles.link}
+                title={`View ${product.brand}`}
+              >
             <div className={styles.productCard}>
               <ProductCard
                 product={product}

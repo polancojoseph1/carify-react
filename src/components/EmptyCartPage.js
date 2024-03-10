@@ -16,7 +16,11 @@ function EmptyCartPage(props) {
           Looks like you haven't added anything to your cart yet. Explore some items to get started.
         </div>
         <div className={styles.returnToShopButtonSection}>
-          <Link className={styles.returnToShopLink} to='/product'>
+          <Link
+            className={styles.returnToShopLink}
+            to='/product'
+            title={`Return to Shop`}
+          >
             <button className={styles.returnToShopButton}>
               Return to Shop
             </button>

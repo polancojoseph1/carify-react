@@ -40,7 +40,7 @@ function AllProducts(props) {
       </div>
       <div className={styles.productCards}>
         {products.map((product, index) => (
-          <Link className={styles.link} to={`/product/${product['id']}`}>
+          <Link className={styles.link} to={`/product/${product['id']}`} title={`View ${product.brand}`}>
             <div className={styles.productCard} key={index}>
               <ProductCard
                 key={index}

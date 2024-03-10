@@ -85,7 +85,9 @@ function Cart(props) {
               totalPrice: totalPrice,
               totalQuantity: totalQuantity
             }}
-            className={styles.link}>
+            className={styles.link}
+            title='Proceed To Checkout'
+          >
             <button className={styles.proceedToCheckout}>
               Proceed To Checkout
             </button>
