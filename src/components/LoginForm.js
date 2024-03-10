@@ -6,6 +6,7 @@ import {
   setUserIdByStorage
 } from '../apiAccessor';
 import { useNavigate } from 'react-router-dom';
+import Top3Products from './Top3Products';
 
 function LoginForm(props) {
   const [email, setEmail] = useState(localStorage.getItem('email') || '');

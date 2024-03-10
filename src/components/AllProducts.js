@@ -5,6 +5,7 @@ import styles from './styles/AllProducts.module.css';
 import { getAllProducts, createGuest, getUserIdByStorage, setUserIdByStorage } from '../apiAccessor'
 import ProductCard from './ProductCard';
 import { Link } from 'react-router-dom';
+import Filter from './Filter';
 
 function AllProducts(props) {
   const {
@@ -13,9 +14,10 @@ function AllProducts(props) {
     cartProducts,
     setCartProducts,
     quantity,
-    setQuantity
+    setQuantity,
+    products,
+    setProducts
   } = props;
-  const [products, setProducts] = useState([]);
   useEffect(() => {
     async function renderAllProducts() {
       const allProducts = await getAllProducts(api);
@@ -26,10 +28,16 @@ function AllProducts(props) {
       }
     }
     renderAllProducts()
-  }, []);
+  }, [setProducts]);
 
   return (
     <div className={styles.AllProducts}>
+      <div className={styles.filter}>
+        <Filter
+          products={products}
+          setProducts={setProducts}
+        />
+      </div>
       <div className={styles.productCards}>
         {products.map((product, index) => (
           <Link className={styles.link} to={`/product/${product['id']}`}>

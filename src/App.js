@@ -12,6 +12,7 @@ import {
 function App() {
   const [cart, setCart] = useState({});
   const [cartProducts, setCartProducts] = useState([]);
+  const [products, setProducts] = useState([]);
   const [
     quantity,
     setQuantity
@@ -46,6 +47,8 @@ function App() {
           setCartProducts={setCartProducts}
           quantity={quantity}
           setQuantity={setQuantity}
+          products={products}
+          setProducts={setProducts}
         />
       </div>
     </div>

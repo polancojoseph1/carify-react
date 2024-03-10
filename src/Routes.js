@@ -8,7 +8,8 @@ import {
   NavBar,
   Checkout,
   UserPage,
-  SuccessfulCheckoutPage
+  SuccessfulCheckoutPage,
+  Filter
 } from './components'
 
 function Router(props) {
@@ -18,7 +19,9 @@ function Router(props) {
     cartProducts,
     setCartProducts,
     quantity,
-    setQuantity
+    setQuantity,
+    products,
+    setProducts
   } = props
   return (
     <BrowserRouter>
@@ -41,6 +44,8 @@ function Router(props) {
             setCartProducts={setCartProducts}
             quantity={quantity}
             setQuantity={setQuantity}
+            products={products}
+            setProducts={setProducts}
         />} />
         <Route path="/product/:id" element={<ProductDetails 
             cart={cart}

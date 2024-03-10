@@ -1,9 +1,11 @@
 .UserPage {
-  height: 91vh;
+  /* height: 100%; */
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* margin-top: 30px; */
 }
 
 .userSection {
@@ -40,6 +42,10 @@
 
 .signupFormContainer {
   height: 100%;
+}
+
+.top3Products {
+  margin-top: 20px;
 }
 
 @media (max-width: 650px) {

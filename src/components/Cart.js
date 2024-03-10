@@ -9,6 +9,7 @@ import {
 import CartProductCard from './CartProductCard';
 import EmptyCartPage from './EmptyCartPage';
 import { Link } from 'react-router-dom';
+import Top3Products from './Top3Products';
 
 function Cart(props) {
   const {
@@ -43,6 +44,9 @@ function Cart(props) {
     ]);
   return cartProducts && cartProducts.length ? (
     <div className={styles.Cart}>
+      <h1 className={styles.cartHeader}>
+        Your Cart
+      </h1>
       <div className={styles.cartProducts}>
         {cartProducts.map((cartProduct, index) => {
           return (
@@ -88,6 +92,7 @@ function Cart(props) {
           </Link>
         </div>
       </div>
+      <Top3Products />
     </div>
   ) : (
       <div className={styles.emptyCartPage}>

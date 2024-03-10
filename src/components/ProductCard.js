@@ -20,7 +20,6 @@ function ProductCard(props) {
     totalrating,
     description
   } = product;
-  console.log(product, "product")
   return (
     <div className={styles.ProductCard}>
       <div className={styles.details}>

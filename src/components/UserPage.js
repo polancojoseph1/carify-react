@@ -8,6 +8,7 @@ import { api } from '../axiosConfig';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import UserAccount from './UserAccount';
+import Top3Products from './Top3Products';
 
 function UserPage(props) {
   const [isGuest, setIsGuest] = useState(true);
@@ -27,6 +28,9 @@ function UserPage(props) {
   }, [setSignupSelected])
   return (
     <div className={styles.UserPage}>
+      <h2 className={styles.header}>
+        Your Account
+      </h2>
       <div className={
         isGuest ?
           !signupSelected ?
@@ -56,6 +60,9 @@ function UserPage(props) {
             />
           </div>)
         }
+      </div>
+      <div className={styles.top3Products}>
+        <Top3Products />
       </div>
     </div>
   );
