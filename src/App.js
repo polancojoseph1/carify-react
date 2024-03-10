@@ -17,6 +17,7 @@ function App() {
     quantity,
     setQuantity
   ] = useState(0);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     async function renderCartData() {
         const userId = getUserIdByStorage();

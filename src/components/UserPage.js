@@ -28,9 +28,6 @@ function UserPage(props) {
   }, [setSignupSelected])
   return (
     <div className={styles.UserPage}>
-      <h2 className={styles.header}>
-        Your Account
-      </h2>
       <div className={
         isGuest ?
           !signupSelected ?

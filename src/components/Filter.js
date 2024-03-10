@@ -24,7 +24,6 @@ function Filter(props) {
 
   const handleColor = async (color) => {
     const selectedProducts = await getAllProductsByColor(color, api);
-    console.log(selectedProducts.map(e => e.color), "hit color")
     setProducts(selectedProducts)
   }
   return (

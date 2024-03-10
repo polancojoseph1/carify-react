@@ -16,11 +16,10 @@ function Top3Products(props) {
   useEffect(() => {
     async function renderTopProducts() {
       const selectedProducts = await getAllProductsByRating(api);
-      console.log(selectedProducts, 'data')
       setTopProducts((selectedProducts || []).slice(0, 3));
     }
     renderTopProducts();
-  })
+  }, [])
 
   return (
     <div className={styles.Top3Products}>
