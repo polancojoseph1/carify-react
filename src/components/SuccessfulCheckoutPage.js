@@ -12,7 +12,7 @@ function SuccessfulCheckoutPage(props) {
       <div className={styles.returnToShopButtonSection}>
         <Link
           className={styles.returnToShopLink}
-          to='/product'
+          to='/'
           title={`Return to Shop`}
         >
           <button className={styles.returnToShopButton}>

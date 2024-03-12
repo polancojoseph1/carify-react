@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import styles from './styles/UserAccount.module.css';
 import { api, auth } from '../axiosConfig';
-import { editUser, getUserById, getUserIdByStorage, logout, removeUserIdFromStorage } from '../apiAccessor';
+import { createGuest, editUser, getUserById, getUserIdByStorage, logout, removeUserIdFromStorage, setUserIdByStorage } from '../apiAccessor';
 import { Link, useNavigate } from 'react-router-dom';
 
 function UserAccount(props) {
   const [formData, setFormData] = useState({});
   const [editing, setEditing] = useState(false);
-  const { cartId } = props;
+  const {
+    cartId,
+    setCart,
+  } = props;
   const navigate = useNavigate();
   
   useEffect(() => {
@@ -51,7 +54,9 @@ function UserAccount(props) {
   const handleLogout = async () => {
     await logout(auth);
     removeUserIdFromStorage();
-    navigate('/product');
+    const newGuest = await createGuest(auth);
+    setUserIdByStorage(newGuest.id);
+    navigate('/');
   };
 
   return (
@@ -138,7 +143,7 @@ function UserAccount(props) {
         <div className={styles.viewProducts}>
           <Link
             className={styles.productsLink}
-            to="/product"
+            to="/"
             title={`View Products`}
           >Products</Link>
         </div>

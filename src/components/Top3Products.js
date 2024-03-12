@@ -10,6 +10,14 @@ import {
 import ProductCard from './ProductCard';
 
 function Top3Products(props) {
+  const {
+    cart,
+    setCart,
+    cartProducts,
+    setCartProducts,
+    quantity,
+    setQuantity
+  } = props;
 
   const [topProducts, setTopProducts] = useState([]);
 
@@ -28,7 +36,16 @@ function Top3Products(props) {
         {(topProducts || []).map((product, index) => {
           return (
             <div className={styles.topProduct} key={index}>
-              <ProductCard key={index} product={product} />
+              <ProductCard
+                key={index}
+                product={product}
+                cart={cart}
+                setCart={setCart}
+                cartProducts={cartProducts}
+                setCartProducts={setCartProducts}
+                quantity={quantity}
+                setQuantity={setQuantity}
+              />
             </div>
           )
         })}

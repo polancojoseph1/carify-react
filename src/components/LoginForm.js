@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
 import styles from './styles/LoginForm.module.css'
-import { auth } from '../axiosConfig';
+import { api, auth } from '../axiosConfig';
 import {
+  getUserIdByStorage,
   login,
-  setUserIdByStorage
+  setUserIdByStorage,
+  updateCartUserId
 } from '../apiAccessor';
 import { useNavigate } from 'react-router-dom';
-import Top3Products from './Top3Products';
 
 function LoginForm(props) {
   const [email, setEmail] = useState(localStorage.getItem('email') || '');
   const [password, setPassword] = useState(localStorage.getItem('password') || '');
   const [rememberMe, setRememberMe] = useState(localStorage.getItem('rememberMe') === 'true' || false);
-  const { setSignupSelected } = props;
+  const {
+    setSignupSelected,
+    cartId,
+    setCart
+  } = props;
   const navigate = useNavigate()
   
   const handleSubmit = async (e) => {
@@ -28,7 +33,12 @@ function LoginForm(props) {
       localStorage.removeItem('password')
       localStorage.removeItem('rememberMe')
     }
-    navigate('/product')
+    if (cartId) {
+      console.log(cartId, "cartId")
+      const updatedCart = await updateCartUserId(cartId, user['id'], api)
+      setCart(updatedCart)
+    }
+    navigate('/')
   };
 
   const handleRegister = () => {

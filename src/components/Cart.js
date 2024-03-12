@@ -23,11 +23,10 @@ function Cart(props) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate an asynchronous operation (e.g., fetching data)
     setTimeout(() => {
-      setLoading(false); // Set loading to false when the operation is complete
-    }, 2000); // Simulate a 2-second delay
-  }, []); // Empty dependency array ensures this effect runs only once, similar to componentDidMount
+      setLoading(false);
+    }, 300); 
+  }, []);
 
 
   const [totalPrice, setTotalPrice] = useState(0);
@@ -42,7 +41,6 @@ function Cart(props) {
       }
       if (selectedCart && selectedCart['id']) {
         const selectedCartProducts = await getCartProductsByCartId(selectedCart['id'], api)
-        console.log(selectedCartProducts, "selectedCartProducts")
         setCartProducts(selectedCartProducts)
       }
     }
@@ -52,14 +50,13 @@ function Cart(props) {
       (cartProducts || []).length,
       totalPrice
     ]);
-  console.log(cartProducts, "cartProducts")
-  return cartProducts && cartProducts.length ? (
+  return (cartProducts && cartProducts.length && !loading) ? (
     <div className={styles.Cart}>
       <h1 className={styles.cartHeader}>
         Your Cart
       </h1>
       <div className={styles.cartProducts}>
-        {cartProducts.map((cartProduct, index) => {
+        {(loading ? [] : cartProducts).map((cartProduct, index) => {
           return (
           <div className={styles.cartProduct} key={index}>
             <CartProductCard
@@ -105,7 +102,14 @@ function Cart(props) {
           </Link>
         </div>
       </div>
-      <Top3Products />
+      <Top3Products
+        cart={cart}
+        setCart={setCart}
+        cartProducts={cartProducts}
+        setCartProducts={setCartProducts}
+        quantity={totalQuantity}
+        setQuantity={setTotalQuantity}
+      />
     </div>
   ) : (
       <div className={styles.emptyCartPage}>

@@ -38,7 +38,8 @@
 }
 
 .proceedToCheckout {
-  background-color: rgb(249, 208, 0);
+  background-color: #a94702f8;
+  color: whitesmoke;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;

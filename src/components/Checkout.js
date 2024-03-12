@@ -17,7 +17,7 @@ function Checkout(props) {
 
   useEffect(() => {
     if (!quantity) {
-      navigate('/product')
+      navigate('/')
     }
   }, []);
   return (

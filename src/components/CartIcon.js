@@ -21,7 +21,7 @@ function CartIcon(props) {
   useEffect(() => {
     async function renderCartData() {
       const userId = getUserIdByStorage();
-      if (userId) {
+      if (userId && userId !== 'undefined') {
         const selectedCart = await getCartByUserId(
           userId,
           api

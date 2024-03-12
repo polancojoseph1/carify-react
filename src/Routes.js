@@ -36,8 +36,7 @@ function Router(props) {
         />
       </div>
       <Routes>
-        <Route path="/" exact element={<Home />} />
-        <Route path="/product" element={<AllProducts
+        <Route path="/" element={<AllProducts
             cart={cart}
             setCart={setCart}
             cartProducts={cartProducts}
@@ -71,9 +70,14 @@ function Router(props) {
             quantity={quantity}
             setQuantity={setQuantity}
         />} />
-        <Route path="/user/:id" element={<UserPage />}
-            cart={cart}
-        />
+        <Route path="/user/:id" element={<UserPage
+          cart={cart}
+          setCart={setCart}
+          cartProducts={cartProducts}
+          setCartProducts={setCartProducts}
+          quantity={quantity}
+          setQuantity={setQuantity}
+        />} />
         <Route path="/success" element={<SuccessfulCheckoutPage />}/>
       </Routes>
     </BrowserRouter>

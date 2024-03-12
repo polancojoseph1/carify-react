@@ -37,11 +37,20 @@ function AddToCart(props) {
   const handleAddToCart = async (event) => {
     event.preventDefault();
     event.stopPropagation();
-    const userId = getUserIdByStorage()
-    let selectedCart = await getCartByUserId(
-      userId,
-      api
-    )
+    let userId = getUserIdByStorage()
+    let selectedCart;
+    if (userId && userId!== 'undefined') {
+      selectedCart = await getCartByUserId(
+        userId,
+        api
+      )
+    } else {
+      const newGuestId = await createGuest(
+        auth
+      )
+      setUserIdByStorage(newGuestId);
+      userId = newGuestId
+    }
     if (!selectedCart) {
       selectedCart = await createCart(
         userId,
@@ -51,7 +60,20 @@ function AddToCart(props) {
       )
     }
     const selectedCartProduct = await getCartProductByCartIdAndProductId(selectedCart['id'], product['id'], api)
-    if (selectedCartProduct['quantity'] >= product['quantity']) {
+    if ((
+        selectedCartProduct
+        ?
+        selectedCartProduct['quantity']
+        :
+        0
+        )
+        >=
+      (
+        product ?
+        product['quantity']
+        :
+        0
+      )) {
       return;
     }
     if (!selectedCartProduct) {

@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import { NavBar } from './components';
 import Router from './Routes';
-import { api } from './axiosConfig';
+import { api, auth } from './axiosConfig';
 import {
   getUserIdByStorage,
   getCartByUserId,
-  getCartProductsByCartId
+  getCartProductsByCartId,
+  createGuest,
+  setUserIdByStorage
 } from './apiAccessor';
 
 function App() {
@@ -17,24 +19,26 @@ function App() {
     quantity,
     setQuantity
   ] = useState(0);
-  const [loading, setLoading] = useState(true);
   useEffect(() => {
     async function renderCartData() {
-        const userId = getUserIdByStorage();
-        if (userId) {
-          const selectedCart = await getCartByUserId(
-            userId,
+      const userId = getUserIdByStorage();
+      if (!(!userId || userId === 'undefined')) {
+        const selectedCart = await getCartByUserId(
+          userId,
+          api
+        )
+        setCart(selectedCart)
+        if (selectedCart && selectedCart.id) {
+          const selectedCartProducts = await getCartProductsByCartId(
+            selectedCart.id,
             api
           )
-          setCart(selectedCart)
-          if (selectedCart && selectedCart.id) {
-            const selectedCartProducts = await getCartProductsByCartId(
-              selectedCart.id,
-              api
-            )
-            setCartProducts(selectedCartProducts)
-          }
-        };
+          setCartProducts(selectedCartProducts)
+        }
+      } else {
+        const guestUserId = await createGuest(auth);
+        setUserIdByStorage(guestUserId)
+        }
       }
       renderCartData();
   }, [])

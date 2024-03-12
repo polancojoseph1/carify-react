@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {api, auth} from '../axiosConfig';
 import styles from './styles/AllProducts.module.css';
-// import ProductRow from './ProductRow';
 import { getAllProducts, createGuest, getUserIdByStorage, setUserIdByStorage } from '../apiAccessor'
 import ProductCard from './ProductCard';
 import { Link } from 'react-router-dom';
@@ -18,12 +17,20 @@ function AllProducts(props) {
     products,
     setProducts
   } = props;
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 200);
+  }, []);
+
   useEffect(() => {
     async function renderAllProducts() {
       const allProducts = await getAllProducts(api);
       setProducts(allProducts)
       let userId = getUserIdByStorage()
-      if (!userId) {
+      if (!userId || userId === 'undefined') {
         createGuest(auth, setUserIdByStorage);
       }
     }
@@ -39,8 +46,8 @@ function AllProducts(props) {
         />
       </div>
       <div className={styles.productCards}>
-        {products.map((product, index) => (
-          <Link className={styles.link} to={`/product/${product['id']}`} title={`View ${product.brand}`}>
+        {(loading ? [] : (products || [])).map((product, index) => (
+          <Link className={styles.link} to={`/product/${product['id']}`} title={`View ${product.brand}`} key={index}>
             <div className={styles.productCard} key={index}>
               <ProductCard
                 key={index}

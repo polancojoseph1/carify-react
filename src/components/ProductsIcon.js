@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function ProductsIcon() {
   return (
     <div className={styles.ProductsIcon}>
-      <Link to={`/product/`} className={styles.link} title='View Products'>
+      <Link to={`/`} className={styles.link} title='View Products'>
         <img src={carIcon}
           alt='Car Icon'
           className={styles.icon}

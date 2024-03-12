@@ -34,6 +34,7 @@ function CartProductCard(props) {
   } = cartProduct;
   const [backupQuantity, setBackupQuantity] = useState(originalQuantity || 0)
   const [cpQuantityState, setCpQuantityState] = useState(originalQuantity || 0)
+  const [canChangeQuantity, setCanChangeQuantity] = useState(true);
 
   const getTotalPrice = async (cartId, api) => {
     const selectedCartProducts = await getCartProductsByCartId(cartId, api);
@@ -52,19 +53,29 @@ function CartProductCard(props) {
   }, [cartProduct]);
 
   const handleQuantityChange = async (event) => {
-    const {value : unparsedNewCpQuantity} = event.target
+    if (!canChangeQuantity) return;
+    setCanChangeQuantity(false);
+    const { value: unparsedNewCpQuantity } = event.target
     if (unparsedNewCpQuantity === '') {
+      // prevent quantity from being empty
       setBackupQuantity(cpQuantityState)
       setCpQuantityState('');
     } else {
+      // determines new cart product quantity
       let newCpQuantity = parseInt(unparsedNewCpQuantity, 10)
-      if (newCpQuantity <= 0) {
+      if (newCpQuantity <= 1) {
+        // prevent quantity less than 1
         newCpQuantity = 1;
       } else if (newCpQuantity > totalquantity) {
+        // prevent quantity greater than total quantity
         newCpQuantity = totalquantity
       }
+      if (newCpQuantity === cpQuantityState) {
+        // prevent api call if quantity hasn't changed
+        return;
+      }
       setCpQuantityState(newCpQuantity);
-      await updateCartProductChange(
+      const {data} = await updateCartProductChange(
         cartProductId, 
         newCpQuantity, 
         newCpQuantity * price,
@@ -73,6 +84,9 @@ function CartProductCard(props) {
       const newTotalPrice = await getTotalPrice(cart['id'], api);
       setTotalPrice(newTotalPrice)
       setTotalQuantity(totalQuantity - (cpQuantityState || 1) + newCpQuantity)
+      setTimeout(() => {
+        setCanChangeQuantity(true);
+      }, 250); // Allow quantity change after 1/4 of a second
     }
   }
 

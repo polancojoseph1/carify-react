@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import styles from './styles/SignupForm.module.css'
-import { auth } from '../axiosConfig';
+import { api, auth } from '../axiosConfig';
 import {
   signup,
-  setUserIdByStorage
+  setUserIdByStorage,
+  updateCartUserId
 } from '../apiAccessor';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,7 +15,11 @@ function SignupForm(props) {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
-  const { setSignupSelected } = props;
+  const {
+    setSignupSelected,
+    cartId,
+    setCart
+  } = props;
   const navigate = useNavigate()
   
   const handleSubmit = async (e) => {
@@ -26,7 +31,11 @@ function SignupForm(props) {
       auth
     )
     setUserIdByStorage(user['id'])
-    navigate('/product')
+    if (cartId) {
+      const updatedCart = await updateCartUserId(cartId, user['id'], api)
+      setCart(updatedCart)
+    }
+    navigate('/')
   };
 
   const handleRegister = () => {
