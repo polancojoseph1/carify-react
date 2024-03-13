@@ -7,6 +7,14 @@
   display: flex;
 }
 
+.link {
+  height: 100%;
+  width: 100%;
+  color: black;
+  text-decoration: none;
+  display: block;
+}
+
 @media (max-width: 650px) {
   .topProducts {
     flex-direction: column;
@@ -16,5 +24,9 @@
 @media (max-width: 450px) {
   .title {
     font-size: 16px;
+  }
+
+  .link {
+    height: 40%;
   }
 }

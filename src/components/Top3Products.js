@@ -36,7 +36,6 @@ function Top3Products(props) {
       <div className={styles.topProducts}>
         {(topProducts || []).map((product, index) => {
           return (
-            <Link className={styles.link} to={`/product/${product['id']}`} title={`View ${product.brand}`} key={index}>
               <div className={styles.topProduct} key={index}>
                 <ProductCard
                   key={index}
@@ -49,7 +48,6 @@ function Top3Products(props) {
                   setQuantity={setQuantity}
                 />
               </div>
-            </Link>
           )
         })}
       </div>
