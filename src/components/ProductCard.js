@@ -1,6 +1,7 @@
 import styles from './styles/ProductCard.module.css'
 import AddToCart from './AddToCart';
 import StarRating from './StarRating';
+import { Link } from 'react-router-dom';
 
 function ProductCard(props) {
   const {
@@ -20,13 +21,14 @@ function ProductCard(props) {
     totalrating,
     description
   } = product;
-  
   return (
     <div className={styles.ProductCard}>
       <div className={styles.details}>
-        <div className={styles.imageSection}>
-          <img src={require(`../icon/cars/${imageurl || '0.png'}`)} className={styles.image} />
-        </div>
+        <Link className={styles.link} to={`/product/${product['id']}`} title={`View ${product.brand}`}>
+          <div className={styles.imageSection}>
+            <img src={require(`../icon/cars/${imageurl || '0.png'}`)} className={styles.image} />
+          </div>
+        </Link>
         <div className={styles.info}>
           <div className={styles.infoTop}>
             <div className={styles.carName}>
