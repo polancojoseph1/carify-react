@@ -8,6 +8,7 @@ import {
   useState
 } from 'react';
 import ProductCard from './ProductCard';
+import { Link } from 'react-router-dom';
 
 function Top3Products(props) {
   const {
@@ -35,18 +36,20 @@ function Top3Products(props) {
       <div className={styles.topProducts}>
         {(topProducts || []).map((product, index) => {
           return (
-            <div className={styles.topProduct} key={index}>
-              <ProductCard
-                key={index}
-                product={product}
-                cart={cart}
-                setCart={setCart}
-                cartProducts={cartProducts}
-                setCartProducts={setCartProducts}
-                quantity={quantity}
-                setQuantity={setQuantity}
-              />
-            </div>
+            <Link className={styles.link} to={`/product/${product['id']}`} title={`View ${product.brand}`} key={index}>
+              <div className={styles.topProduct} key={index}>
+                <ProductCard
+                  key={index}
+                  product={product}
+                  cart={cart}
+                  setCart={setCart}
+                  cartProducts={cartProducts}
+                  setCartProducts={setCartProducts}
+                  quantity={quantity}
+                  setQuantity={setQuantity}
+                />
+              </div>
+            </Link>
           )
         })}
       </div>

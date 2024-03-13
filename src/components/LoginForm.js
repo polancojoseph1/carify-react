@@ -34,7 +34,6 @@ function LoginForm(props) {
       localStorage.removeItem('rememberMe')
     }
     if (cartId) {
-      console.log(cartId, "cartId")
       const updatedCart = await updateCartUserId(cartId, user['id'], api)
       setCart(updatedCart)
     }
