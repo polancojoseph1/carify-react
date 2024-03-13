@@ -36,6 +36,7 @@ function SignupForm(props) {
       setCart(updatedCart)
     }
     navigate('/')
+    window.location.reload();
   };
 
   const handleRegister = () => {

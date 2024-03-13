@@ -57,6 +57,7 @@ function UserAccount(props) {
     const newGuest = await createGuest(auth);
     setUserIdByStorage(newGuest.id);
     navigate('/');
+    window.location.reload();
   };
 
   return (
