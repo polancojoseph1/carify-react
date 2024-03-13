@@ -1,4 +1,4 @@
-import axios, * as others from 'axios'
+import axios from 'axios'
 
 const api = axios.create({
   baseURL: 'https://carify-liard.vercel.app/api/',
